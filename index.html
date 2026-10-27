@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ТатварЗөвлөх — Татварын хуулийн зөвлөгөө ба гарын авлага</title>
+  <meta name="description" content="Татварын хуулийн зөвлөгөө, мэдээлэл, гүнзгийрүүлсэн гарын авлага файл, татварын эрсдэлийн тооцоолуур.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#home" class="logo">Татвар<span>Зөвлөх</span></a>
+      <button class="nav-toggle" aria-label="Цэс нээх" aria-expanded="false">☰</button>
+      <nav class="nav-links">
+        <a href="#info">Мэдээлэл</a>
+        <a href="#guides">Гарын авлага</a>
+        <a href="#risk">Эрсдэл тооцоолох</a>
+        <a href="#consult">Зөвлөгөө авах</a>
+        <button class="cart-btn" id="cartOpen">Сагс <span id="cartCount">0</span></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Нүүр -->
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div>
+          <h1>Татварын хуулиа ойлгож, эрсдэлээ урьдчилан хар</h1>
+          <p class="lead">Татварын хуулийн зөвлөгөө, шинэчлэгдсэн мэдээлэл, практикт шууд хэрэглэх гүнзгийрүүлсэн гарын авлагууд — нэг дор.</p>
+          <div class="hero-actions">
+            <a href="#risk" class="btn btn-primary">Эрсдэлээ үнэгүй тооцох</a>
+            <a href="#guides" class="btn btn-ghost">Гарын авлага үзэх</a>
+          </div>
+        </div>
+        <ul class="hero-stats">
+          <li><strong>3</strong><span>үндсэн үйлчилгээ</span></li>
+          <li><strong>6+</strong><span>гарын авлага файл</span></li>
+          <li><strong>2 мин</strong><span>эрсдэлийн үнэлгээ</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Мэдээлэл -->
+    <section id="info" class="section">
+      <div class="container">
+        <h2>Татварын мэдээлэл</h2>
+        <p class="section-sub">Хууль, журмын гол ойлголтуудыг товч, ойлгомжтой тайлбарлав.</p>
+        <div class="filter" id="infoFilter">
+          <button class="chip active" data-tag="all">Бүгд</button>
+          <button class="chip" data-tag="ААНОАТ">ААНОАТ</button>
+          <button class="chip" data-tag="НӨАТ">НӨАТ</button>
+          <button class="chip" data-tag="ХХОАТ">ХХОАТ</button>
+          <button class="chip" data-tag="Ерөнхий">Ерөнхий</button>
+        </div>
+        <div class="grid cards" id="articles"></div>
+      </div>
+    </section>
+
+    <!-- Гарын авлага дэлгүүр -->
+    <section id="guides" class="section alt">
+      <div class="container">
+        <h2>Гүнзгийрүүлсэн гарын авлага</h2>
+        <p class="section-sub">Жишээ тооцоо, загвар маягт, алхам алхмаар заавар бүхий PDF/Excel файлууд.</p>
+        <div class="grid products" id="products"></div>
+      </div>
+    </section>
+
+    <!-- Эрсдэлийн тооцоолуур -->
+    <section id="risk" class="section">
+      <div class="container narrow">
+        <h2>Татварын эрсдэлийн үнэлгээ</h2>
+        <p class="section-sub">Асуултад хариулж, байгууллагынхаа татварын эрсдэлийн түвшинг тодорхойлоорой.</p>
+        <form id="riskForm" class="risk-form"></form>
+        <div id="riskResult" class="risk-result" hidden></div>
+      </div>
+    </section>
+
+    <!-- Зөвлөгөө -->
+    <section id="consult" class="section alt">
+      <div class="container narrow">
+        <h2>Мэргэжлийн зөвлөгөө авах</h2>
+        <p class="section-sub">Асуултаа үлдээвэл татварын мэргэжилтэн тантай холбогдоно.</p>
+        <form id="consultForm" class="form">
+          <div class="row">
+            <label>Нэр<input name="name" required></label>
+            <label>Утас<input name="phone" type="tel" required pattern="[0-9+ ]{8,}"></label>
+          </div>
+          <label>И-мэйл<input name="email" type="email"></label>
+          <label>Сэдэв
+            <select name="topic">
+              <option>ААН-ийн орлогын албан татвар</option>
+              <option>Нэмэгдсэн өртгийн албан татвар</option>
+              <option>Хувь хүний орлогын албан татвар</option>
+              <option>Татварын хяналт шалгалт</option>
+              <option>Бусад</option>
+            </select>
+          </label>
+          <label>Асуулт<textarea name="message" rows="4" required></textarea></label>
+          <button class="btn btn-primary" type="submit">Илгээх</button>
+          <p class="form-msg" id="consultMsg" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p><strong>ТатварЗөвлөх</strong> · Утас: 0000-0000 · info@example.mn</p>
+      <p class="disclaimer">Энэ сайт дахь мэдээлэл нь ерөнхий чиглэл өгөх зорилготой бөгөөд хууль зүйн албан ёсны дүгнэлт биш. Хуулийн хамгийн сүүлийн хувилбарыг legalinfo.mn-ээс шалгана уу.</p>
+    </div>
+  </footer>
+
+  <!-- Сагс -->
+  <aside class="cart" id="cart" aria-hidden="true">
+    <div class="cart-head">
+      <h3>Сагс</h3>
+      <button class="icon-btn" id="cartClose" aria-label="Хаах">✕</button>
+    </div>
+    <ul id="cartItems" class="cart-items"></ul>
+    <div class="cart-foot">
+      <p class="total">Нийт: <strong id="cartTotal">0₮</strong></p>
+      <form id="checkoutForm" class="form">
+        <label>Утас<input name="phone" type="tel" required pattern="[0-9+ ]{8,}"></label>
+        <label>И-мэйл (файл илгээх)<input name="email" type="email" required></label>
+        <button class="btn btn-primary" type="submit">Захиалах</button>
+      </form>
+      <div id="payInfo" class="pay-info" hidden></div>
+    </div>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>
