@@ -91,33 +91,11 @@
   });
   renderCart();
 
-  // Эрсдэлийн тооцоолуур
-  const form = $("#riskForm");
-  form.innerHTML = RISK_QUESTIONS.map(
-    (q, i) => `<fieldset><legend>${i + 1}. ${esc(q.q)}</legend>
-      ${q.options.map(([label, w], j) => `<label class="opt"><input type="radio" name="q${i}" value="${w}" ${j === 0 ? "required" : ""}> ${esc(label)}</label>`).join("")}
-    </fieldset>`
-  ).join("") + `<button class="btn btn-primary" type="submit">Эрсдэл тооцоолох</button>`;
-
-  const maxScore = RISK_QUESTIONS.reduce((s, q) => s + Math.max(...q.options.map((o) => o[1])), 0);
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const score = RISK_QUESTIONS.reduce((s, _, i) => s + Number(form[`q${i}`].value), 0);
-    const pct = Math.round((score / maxScore) * 100);
-    const level = pct < 30
-      ? { cls: "low", name: "Бага эрсдэл", text: "Татварын үйл ажиллагаа тань харьцангуй эмх цэгцтэй байна. Жилд нэг удаа дотоод шалгалт хийхэд хангалттай." }
-      : pct < 60
-      ? { cls: "mid", name: "Дунд эрсдэл", text: "Зарим хэсэгт зөрчил үүсэх магадлалтай. Баримтын бүрдэл, тайлангийн хугацаагаа шалгаж, мэргэжилтэнтэй зөвлөлдөхийг зөвлөж байна." }
-      : { cls: "high", name: "Өндөр эрсдэл", text: "Нөхөн татвар, торгууль ногдох магадлал өндөр. Аль болох хурдан мэргэжлийн зөвлөгөө авна уу." };
-    const r = $("#riskResult");
-    r.className = "risk-result " + level.cls;
-    r.innerHTML = `<div class="meter"><span style="width:${pct}%"></span></div>
-      <h3>${level.name} — ${pct}%</h3><p>${level.text}</p>
-      <div class="hero-actions"><a href="#consult" class="btn btn-primary">Зөвлөгөө авах</a><a href="#guides" class="btn btn-ghost">Гарын авлага үзэх</a></div>`;
-    r.hidden = false;
-    r.scrollIntoView({ behavior: "smooth", block: "center" });
-  });
+  // Эрсдэлийн бот (bot.js) сагс ашиглана
+  window.addToCart = (id) => {
+    if (!cart.includes(id)) cart.push(id);
+    save(); renderCart(); setCart(true);
+  };
 
   // Зөвлөгөөний хүсэлт — одоогоор зөвхөн браузерт хадгална. Сервер холбох үед энд илгээнэ.
   $("#consultForm").addEventListener("submit", (e) => {

@@ -37,7 +37,7 @@
         <ul class="hero-stats">
           <li><strong>3</strong><span>үндсэн үйлчилгээ</span></li>
           <li><strong>6+</strong><span>гарын авлага файл</span></li>
-          <li><strong>2 мин</strong><span>эрсдэлийн үнэлгээ</span></li>
+          <li><strong>15+</strong><span>эрсдэлийн үзүүлэлт</span></li>
         </ul>
       </div>
     </section>
@@ -70,9 +70,13 @@
     <!-- Эрсдэлийн тооцоолуур -->
     <section id="risk" class="section">
       <div class="container narrow">
-        <h2>Татварын эрсдэлийн үнэлгээ</h2>
-        <p class="section-sub">Асуултад хариулж, байгууллагынхаа татварын эрсдэлийн түвшинг тодорхойлоорой.</p>
-        <form id="riskForm" class="risk-form"></form>
+        <h2>Татварын эрсдэлийн бот</h2>
+        <p class="section-sub">Ботын асуултад хариулж, хүсвэл санхүүгийн тоогоо оруулаад байгууллагынхаа татварын эрсдэлийн дэлгэрэнгүй тайланг аваарай.</p>
+        <div class="bot">
+          <div class="bot-head"><span class="bot-avatar">₮</span><div><strong>Эрсдэлийн туслах</strong><small>Мэдээллийг тань хадгалахгүй, зөвхөн таны браузерт тооцно</small></div></div>
+          <div class="bot-log" id="botLog" aria-live="polite"></div>
+          <div class="bot-input" id="botInput"></div>
+        </div>
         <div id="riskResult" class="risk-result" hidden></div>
       </div>
     </section>
@@ -133,5 +137,6 @@
 
   <script src="assets/data.js"></script>
   <script src="assets/app.js"></script>
+  <script src="assets/bot.js"></script>
 </body>
 </html>
